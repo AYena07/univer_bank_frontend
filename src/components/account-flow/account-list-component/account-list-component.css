@@ -1,0 +1,76 @@
+@keyframes gradient-transformation {
+    from {background-color: #855380;}
+    to {background-color: purple;}
+}
+
+@keyframes gradient-transformation-reverse {
+    from {background-color: purple;}
+    to {background-color: #855380;}
+}
+
+.accounts-title {
+    text-align: left;
+    padding: 20px 20px 20px 50px;
+}
+
+.account-item:hover {
+    animation: gradient-transformation;
+    animation-duration: 0.5s;
+    background-color: purple;
+}
+
+.account-item {
+    height: 70px;
+    animation: gradient-transformation-reverse;
+    animation-duration: 0.5s;
+    border-radius: 20px;
+    padding: 15px 20px;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    width: 60%;
+    display: flex;
+    background-color: #855380;
+    margin-bottom: 30px;
+    flex-direction: row;
+    box-shadow: 5px 5px 5px #333333;
+}
+
+.number-block {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.money-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.accounts {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.center-col {
+    font-size: x-large;
+    display: flex;
+    flex-grow: 4;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-col {
+    display: flex;
+    min-width: 100px;
+    justify-content: flex-end;
+    align-items: flex-start;
+}

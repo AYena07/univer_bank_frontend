@@ -15,14 +15,14 @@
 
 .account-item:hover {
     animation: gradient-transformation;
-    animation-duration: 0.5s;
+    animation-duration: 0.25s;
     background-color: purple;
 }
 
 .account-item {
     height: 70px;
     animation: gradient-transformation-reverse;
-    animation-duration: 0.5s;
+    animation-duration: 0.25s;
     border-radius: 20px;
     padding: 15px 20px;
     color: white;

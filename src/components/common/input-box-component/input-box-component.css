@@ -1,0 +1,39 @@
+.errorMessage {
+    position: relative;
+    margin: 0 0 10px 0;
+    background-color: #d7acac;
+    border: solid 1px red;
+    text-align: left;
+    padding: 5px;
+    font-family: Arial, serif;
+    font-size: medium;
+    width: 350px;
+}
+
+.wrapper {
+    display: flex;
+    padding: 50px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    text-align: left;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: Arial, serif;
+    margin-bottom: 10px;
+}
+
+input {
+    font-size: large;
+    min-width: 350px;
+    margin-bottom: 15px;
+    padding: 5px 0;
+}
+
+.input-box-wrapper {
+    display: flex;
+    flex-direction: column;
+}

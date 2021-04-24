@@ -11,7 +11,7 @@ class UserService {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + AuthService.getCookie('token'),
-                //'X-CSRFToken': AuthService.getCookie('csrftoken')
+                'X-CSRFToken': AuthService.getCookie('csrftoken')
             }
         })
     }

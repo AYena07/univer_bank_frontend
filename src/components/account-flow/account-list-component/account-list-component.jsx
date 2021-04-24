@@ -1,5 +1,6 @@
 import './account-list-component.css'
 import AccountService from '../../../services/account-service';
+import UserService from '../../../services/user-service';
 import React from 'react';
 
 class AccountListComponent extends React.Component {
@@ -7,19 +8,34 @@ class AccountListComponent extends React.Component {
     constructor() {
         super();
         this.state = {
-            accounts: []
+            accounts: null,
+            currencies: null,
+            user: null
         }
     }
 
     componentDidMount() {
         AccountService.accounts().then((response) => {
             response.json().then((body) => {
-                this.setState({accounts: body})
+                this.setState({accounts: body});
             })
+        })
+        AccountService.currencies().then((response) => {
+            response.json().then((body) =>{
+                this.setState({currencies: body});
+            });
+        })
+        UserService.me().then((response) => {
+            response.json().then((body) =>{
+                this.setState({user: body});
+            });
         })
     }
 
     renderAccounts() {
+        console.log(this.state);
+        const currencies = this.state.currencies;
+        const user = this.state.user;
         return this.state.accounts.map(function (item, index) {
             return <div className={"account-item"}>
                 <div className={"left-col"}>
@@ -28,7 +44,7 @@ class AccountListComponent extends React.Component {
                     </div>
                     <div className={"money-block"}>
                         <div className={"currency-block"}>
-                            {item.currency}
+                            {currencies.find(x => x.id === item.currency).title}
                         </div>
                         <div className={"cash-block"}>
                             {item.cash}
@@ -39,7 +55,7 @@ class AccountListComponent extends React.Component {
                     {item.title}
                 </div>
                 <div className={"right-col"}>
-                    {item.owner &&
+                    {(item.owner === user.email) &&
                     <span>You owner</span>}
                 </div>
             </div>
@@ -48,11 +64,14 @@ class AccountListComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div> { this.state.accounts && this.state.currencies && this.state.user && (
+                <div className={"accounts-container"}>
                 <h1 className={"accounts-title"}>My Bills</h1>
+                <button className={"new-account"}>Create another account</button>
                 <div className={"accounts"}>
                     {this.renderAccounts()}
                 </div>
+                </div>)}
             </div>
         );
     }

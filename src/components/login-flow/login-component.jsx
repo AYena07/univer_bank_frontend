@@ -20,15 +20,13 @@ class LoginComponent extends React.Component {
         this.logIn = this.logIn.bind(this);
     }
 
-    handleResponseError(response) {
-        response.json().then(errorsData => {
-            this.emailRef.current.updateError(errorsData['email'] ? errorsData['email'] : '');
-            this.passwordRef.current.updateError(errorsData['password'] ? errorsData['password'] : '');
-            this.setState({
-                errors: {
-                    non_field_errors: errorsData['non_field_errors'] ? errorsData['non_field_errors'] : ''
-                }
-            })
+    handleResponseError(errorsData) {
+        this.emailRef.current.updateError(errorsData['email'] ? errorsData['email'] : '');
+        this.passwordRef.current.updateError(errorsData['password'] ? errorsData['password'] : '');
+        this.setState({
+            errors: {
+                non_field_errors: errorsData['non_field_errors'] ? errorsData['non_field_errors'] : ''
+            }
         })
     }
 
@@ -37,9 +35,9 @@ class LoginComponent extends React.Component {
             email: this.emailRef.current.getValue(),
             password: this.passwordRef.current.getValue()
         }
-        AuthService.login(this.user).then(response => {
-            if (!response.ok) {
-                this.handleResponseError(response);
+        AuthService.login(this.user).then(body => {
+            if (!body.token) {
+                this.handleResponseError(body);
             } else {
                 this.props.history.push('/');
             }

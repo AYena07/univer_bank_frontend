@@ -5,7 +5,7 @@ import AuthService from '../../../services/auth-service';
 class HeaderComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.logout = this.logout.bind(this)
+        this.logout = this.logout.bind(this);
     }
 
     logout = () => {
@@ -19,7 +19,7 @@ class HeaderComponent extends React.Component {
         return (
             <div>
                 <div className="bar">
-                    <h2>Artem</h2>
+                    <h2>{this.props.user.email}</h2>
                     <div className='link' onClick={this.logout}>logout</div>
                 </div>
             </div>

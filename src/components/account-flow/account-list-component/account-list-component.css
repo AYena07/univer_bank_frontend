@@ -1,22 +1,29 @@
 @keyframes gradient-transformation {
-    from {background-color: #855380;}
-    to {background-color: purple;}
+    from {margin-left: 0;}
+    to {margin-left: 20px;}
 }
 
 @keyframes gradient-transformation-reverse {
-    from {background-color: purple;}
-    to {background-color: #855380;}
+    from {margin-left: 20px;}
+    to {margin-left: 0;}
 }
 
 .accounts-title {
     text-align: left;
+    margin-top: 0;
+    margin-left: 100px;
     padding: 20px 20px 20px 50px;
+}
+
+.accounts-container {
+    background: linear-gradient(180deg, #FFE5B4 0%, #855380 100%);
+    min-height: 95vh;
 }
 
 .account-item:hover {
     animation: gradient-transformation;
     animation-duration: 0.25s;
-    background-color: purple;
+    margin-left: 20px;
 }
 
 .account-item {
@@ -30,7 +37,7 @@
     font-weight: bold;
     width: 60%;
     display: flex;
-    background-color: #855380;
+    background: linear-gradient(0deg, #333333 0%, #855380 100%);
     margin-bottom: 30px;
     flex-direction: row;
     box-shadow: 5px 5px 5px #333333;
@@ -73,4 +80,18 @@
     min-width: 100px;
     justify-content: flex-end;
     align-items: flex-start;
+}
+
+.new-account {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 30px;
+    width: 60%;
+    transition: background-color .5s;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.new-account:hover {
+    cursor: pointer;
+    background-color: purple;
 }

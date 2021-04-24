@@ -11,6 +11,21 @@ class AccountService {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + AuthService.getCookie('token'),
+                'X-CSRFToken': AuthService.getCookie('csrftoken')
+            }
+        })
+    }
+
+    static async currencies() {
+        return fetch(backend_url + '/api/currency/', {
+            method: "GET",
+            mode: "cors",
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + AuthService.getCookie('token'),
+                'X-CSRFToken': AuthService.getCookie('csrftoken')
             }
         })
     }

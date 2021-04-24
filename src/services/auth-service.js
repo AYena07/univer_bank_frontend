@@ -22,15 +22,14 @@ class AuthService {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'X-CSRFToken': AuthService.getCookie('csrftoken')
             },
             credentials: 'include',
             body: JSON.stringify(user)
         })
         const body = await response.json()
-        console.log(body);
         document.cookie = `token=${body.token}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`
-        console.log(response);
-        return response;
+        return body;
     }
 
     static async register(user) {
@@ -40,8 +39,7 @@ class AuthService {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Token ' + AuthService.getCookie('token'),
-                //'X-CSRFToken': AuthService.getCookie('csrftoken')
+                'X-CSRFToken': AuthService.getCookie('csrftoken')
             },
             body: JSON.stringify(user)
         })
@@ -55,6 +53,7 @@ class AuthService {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'X-CSRFToken': AuthService.getCookie('csrftoken'),
                 'Authorization': 'Token ' + AuthService.getCookie('token')
             }
         }).then( response => {

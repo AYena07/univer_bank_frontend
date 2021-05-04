@@ -1,6 +1,7 @@
 import './account-list-component.css'
 import AccountService from '../../../services/account-service';
 import UserService from '../../../services/user-service';
+import {Link} from 'react-router-dom';
 import React from 'react';
 
 class AccountListComponent extends React.Component {
@@ -64,10 +65,10 @@ class AccountListComponent extends React.Component {
 
     render() {
         return (
-            <div> { this.state.accounts && this.state.currencies && this.state.user && (
+            <div className={"wrappers"}> { this.state.accounts && this.state.currencies && this.state.user && (
                 <div className={"accounts-container"}>
                 <h1 className={"accounts-title"}>My Bills</h1>
-                <button className={"new-account"}>Create another account</button>
+                <Link className={"new-account"} to="/accounts/create">Create another account</Link>
                 <div className={"accounts"}>
                     {this.renderAccounts()}
                 </div>

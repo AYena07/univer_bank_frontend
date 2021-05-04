@@ -17,7 +17,7 @@
 
 .accounts-container {
     background: linear-gradient(180deg, #FFE5B4 0%, #855380 100%);
-    min-height: 95vh;
+    min-height: 100vh;
 }
 
 .account-item:hover {
@@ -61,6 +61,7 @@
 }
 
 .accounts {
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -86,10 +87,13 @@
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 30px;
-    width: 60%;
     transition: background-color .5s;
-    padding-left: 20px;
-    padding-right: 20px;
+    color: white;
+    font-size: large;
+    border-radius: 20px;
+    text-decoration: none;
+    background-color: #855380;
+    padding: 20px 20%;
 }
 .new-account:hover {
     cursor: pointer;

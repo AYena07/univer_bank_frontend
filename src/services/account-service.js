@@ -29,6 +29,20 @@ class AccountService {
             }
         })
     }
+
+    static createAccount(account) {
+        return fetch(backend_url + '/api/accounts/', {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + AuthService.getCookie('token'),
+                'X-CSRFToken': AuthService.getCookie('csrftoken')
+            },
+            body: JSON.stringify(account)
+        })
+    }
 }
 
 export default AccountService;

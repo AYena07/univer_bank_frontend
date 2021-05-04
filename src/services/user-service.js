@@ -15,6 +15,20 @@ class UserService {
             }
         })
     }
+
+    static async usersList() {
+        return fetch(backend_url + '/api/users/', {
+            method: "GET",
+            mode: "cors",
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Token ' + AuthService.getCookie('token'),
+                'X-CSRFToken': AuthService.getCookie('csrftoken')
+            }
+        })
+    }
 }
 
 export default UserService;

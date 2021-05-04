@@ -1,0 +1,94 @@
+.account-create-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgba(255,229,180,1) 0%, rgba(133,83,128,1) 100%);
+}
+
+.account-create-title {
+    text-align: left;
+    margin: 0 0 0 100px;
+    padding: 20px 20px 20px 50px;
+}
+
+.form {
+    max-width: 600px;
+    text-align: left;
+    padding: 20px 20px 20px 50px;
+    font-size: x-large;
+    font-weight: bold;
+    margin-left: 100px;
+}
+
+.row {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.buttons-container {
+    margin-top: 100px;
+}
+
+.cancel {
+    background-color: #A93232;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.create {
+    background-color: #608553;
+    margin-right: 20px;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.cancel:hover {
+    background-color: red;
+}
+
+.create:hover {
+    background-color: green;
+}
+
+.account-create-input {
+    background-color: #FFE5B4;
+    color: #333333;
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 0;
+    padding: 5px;
+    border: none;
+}
+
+.account-create-input:focus {
+    outline-color: #333333;
+}
+
+.user-search {
+    height: 20px;
+    z-index: 2;
+}
+
+.list-option {
+    background-color: #FFE5B4;
+    border-top: solid 2px #333333;
+    padding: 5px;
+    z-index: 2;
+}
+
+.del-button {
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+.errorMessage {
+    position: relative;
+    margin: 0 0 10px 0;
+    background-color: #d7acac;
+    border: solid 1px red;
+    text-align: left;
+    padding: 5px;
+    font-family: Arial, serif;
+    font-size: medium;
+    width: 350px;
+}

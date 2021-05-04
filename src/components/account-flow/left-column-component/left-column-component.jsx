@@ -25,7 +25,7 @@ class LeftColumnComponent extends React.Component {
                 <div className={"burger-button"} onClick={this.openNav}>
                     <span className={"burger-text"} >&#9776;</span>
                 </div>
-                <div id="side-box" className="sidebox">
+                <div id="side-box" className="sidebox" onClick={this.closeNav}>
                 </div>
                 <div id="side-nav" className="sidenav">
                     <span className="closebtn x" onClick={this.closeNav}>&times;</span>

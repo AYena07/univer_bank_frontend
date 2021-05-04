@@ -2,7 +2,9 @@ import {BrowserRouter, Switch, Route, Redirect, useRouteMatch} from 'react-route
 import AccountListComponent from './account-list-component/account-list-component';
 import HeaderComponent from "./header-component/header-component";
 import UserService from '../../services/user-service'
+import './account-style.css'
 import LeftColumnComponent from "./left-column-component/left-column-component";
+import AccountCreateComponent from "./account-create-component/account-create-component";
 import React from 'react';
 
 class AccountRouterComponent extends React.Component {
@@ -25,13 +27,14 @@ class AccountRouterComponent extends React.Component {
     }
 
     render() {
-        return (<div>
-        { this.state.authenticated && (<div>
+        return (<div className={"wrappers"}>
+        { this.state.authenticated && (<div className={"wrappers"}>
                 <LeftColumnComponent location={this.props.location}/>
                 <HeaderComponent history={this.props.history} user={this.state.user}/>
                 <BrowserRouter>
                     <Switch>
                         <Route exact path='/accounts' component={AccountListComponent}/>
+                        <Route exact path='/accounts/create' component={AccountCreateComponent}/>
                     </Switch>
                 </BrowserRouter>
             </div>)}

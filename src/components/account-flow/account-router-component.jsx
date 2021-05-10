@@ -1,7 +1,8 @@
-import {BrowserRouter, Switch, Route, Redirect, useRouteMatch} from 'react-router-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import AccountListComponent from './account-list-component/account-list-component';
 import HeaderComponent from "./header-component/header-component";
 import UserService from '../../services/user-service'
+import AccountRetrieveComponent from "./account-retrieve-component/account-retrieve-component";
 import './account-style.css'
 import LeftColumnComponent from "./left-column-component/left-column-component";
 import AccountCreateComponent from "./account-create-component/account-create-component";
@@ -35,6 +36,7 @@ class AccountRouterComponent extends React.Component {
                     <Switch>
                         <Route exact path='/accounts' component={AccountListComponent}/>
                         <Route exact path='/accounts/create' component={AccountCreateComponent}/>
+                        <Route exact path='/accounts/:id' component={AccountRetrieveComponent}/>
                     </Switch>
                 </BrowserRouter>
             </div>)}

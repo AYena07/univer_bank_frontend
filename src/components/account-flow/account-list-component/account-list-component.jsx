@@ -1,4 +1,5 @@
 import './account-list-component.css'
+import { withRouter } from 'react-router';
 import AccountService from '../../../services/account-service';
 import UserService from '../../../services/user-service';
 import {Link} from 'react-router-dom';
@@ -13,6 +14,7 @@ class AccountListComponent extends React.Component {
             currencies: null,
             user: null
         }
+        this.renderAccounts = this.renderAccounts.bind(this);
     }
 
     componentDidMount() {
@@ -37,8 +39,9 @@ class AccountListComponent extends React.Component {
         console.log(this.state);
         const currencies = this.state.currencies;
         const user = this.state.user;
+        const { history } = this.props;
         return this.state.accounts.map(function (item, index) {
-            return <div className={"account-item"}>
+            return <div className={"account-item"} onClick={() => {history.push('/accounts/' + item.id);}}>
                 <div className={"left-col"}>
                     <div className={"number-block"}>
                         # {item.number}
@@ -78,4 +81,4 @@ class AccountListComponent extends React.Component {
     }
 }
 
-export default AccountListComponent;
+export default withRouter(AccountListComponent);

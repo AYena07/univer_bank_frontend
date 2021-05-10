@@ -3,7 +3,6 @@ import { withRouter } from 'react-router';
 import './account-create-component.css';
 import AccountService from "../../../services/account-service";
 import UserService from "../../../services/user-service";
-import AuthService from "../../../services/auth-service";
 
 class AccountCreateComponent extends React.Component {
 
@@ -136,7 +135,6 @@ class AccountCreateComponent extends React.Component {
             title: this.title.current.value,
             currency: currencyId
         }
-        console.log(account);
         AccountService.createAccount(account).then(response => {
             if (!response.ok) {
                 this.handleResponseError(response);
@@ -179,7 +177,9 @@ class AccountCreateComponent extends React.Component {
                         {this.userPattern.current && this.userPattern.current.value && this.usersList()}
                     </div>
                 </div>
-                {this.pickedUsers()}
+                <div className={"users"}>
+                    {this.pickedUsers()}
+                </div>
                 <div className={"buttons-container"}>
                     <button className={"create"} onClick={this.postAccount}>Create</button>
                     <button className={"cancel"} onClick={() => history.push('/accounts')}>Cancel</button>

@@ -1,0 +1,113 @@
+@keyframes gradient-transformation {
+    from {
+        margin-left: 0;
+    }
+    to {
+        margin-left: 20px;
+    }
+}
+
+@keyframes gradient-transformation-reverse {
+    from {
+        margin-left: 20px;
+    }
+    to {
+        margin-left: 0;
+    }
+}
+
+.filer-from {
+    text-align: left;
+    margin-top: 0px;
+    margin-left: 100px;
+    padding: 20px 20px 20px 50px;
+}
+
+.transacions-title {
+    text-align: left;
+    margin-top: 0px;
+    margin-left: 100px;
+    padding: 20px 20px 20px 50px;
+}
+
+.transactions-container {
+    background: linear-gradient(180deg, #FFE5B4 0%, #855380 100%);
+    min-height: 95vh;
+}
+
+.transactions-item:hover {
+    animation: gradient-transformation;
+    animation-duration: 0.25s;
+    margin-left: 20px;
+}
+
+.transaction-item {
+    height: 70px;
+    animation: gradient-transformation-reverse;
+    animation-duration: 0.25s;
+    padding: 15px 20px;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    width: 60%;
+    display: flex;
+    background: linear-gradient(0deg, #333333 0%, #855380 100%);
+    margin-bottom: 30px;
+    flex-direction: row;
+    box-shadow: 5px 5px 5px #333333;
+}
+
+.number-block-transactions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left-col-transactions {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cash-block-transactions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.transactions {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.center-col-transactions {
+    font-size: x-large;
+    display: flex;
+    flex-grow: 4;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-col-transactions {
+    display: flex;
+    min-width: 100px;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.new-transaction {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 30px;
+    width: 60%;
+    transition: background-color .5s;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.new-transaction:hover {
+    cursor: pointer;
+    background-color: purple;
+}

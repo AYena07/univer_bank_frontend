@@ -30,7 +30,7 @@ class LeftColumnComponent extends React.Component {
                 <div id="side-nav" className="sidenav">
                     <span className="closebtn x" onClick={this.closeNav}>&times;</span>
                     <Link className={(path === "/accounts" ? " selected" : " ") + " side-link"} to="/">My Bills</Link>
-                    <Link className={(path === "/trans" ? " selected" : " ") + " side-link"} to="/">My Transactions</Link>
+                    <Link className={(path === "/trans" ? " selected" : " ") + " side-link"} to="/trans">My Transactions</Link>
                     <Link className={(path === "/profile" ? " selected" : " ") + " side-link"} to="/">Profile</Link>
                 </div>
             </div>

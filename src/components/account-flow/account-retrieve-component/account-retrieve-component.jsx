@@ -5,6 +5,9 @@ import AccountService from "../../../services/account-service";
 import NewCardComponent from "./new-card-component/new-card-component";
 import CardRetrieveComponent from "./card-retrieve-component/card-retrieve-component";
 import UserService from "../../../services/user-service";
+import {Link, useHistory} from "react-router-dom";
+import { withRouter } from 'react-router'
+import AccountRouterComponent from "../account-router-component";
 
 class AccountRetrieveComponent extends React.Component {
 
@@ -142,6 +145,7 @@ class AccountRetrieveComponent extends React.Component {
     }
 
     cardsForm() {
+
         const users = this.state.allUsers;
         const cardClick = this.cardClick;
         return this.state.cards.map(function (elem, index) {
@@ -160,6 +164,11 @@ class AccountRetrieveComponent extends React.Component {
     }
 
     render() {
+        const account = this.state.account
+        const newTo = {
+            pathname: "/trans",
+            userId: account ? account.id : undefined
+        };
         return <div> {
             this.state.currencies && this.state.currentUser &&
             this.state.account && this.state.cards && this.state.users && this.state.allUsers && (
@@ -186,7 +195,7 @@ class AccountRetrieveComponent extends React.Component {
                     }
                     <div className={"top-row space-between-row"}>
                         <div># {this.state.account.number}</div>
-                        <button className={"retrieve-button"}>View transactions</button>
+                        <Link to={newTo}><button className={"retrieve-button"}>View transactions</button></Link>
                     </div>
                     <div className={"top-row space-between-row"}>
                         <div>Owner: {this.state.account.owner === this.state.currentUser.email ? "you" : this.state.account.owner}</div>
@@ -227,4 +236,4 @@ class AccountRetrieveComponent extends React.Component {
     }
 }
 
-export default AccountRetrieveComponent;
+export default withRouter(AccountRetrieveComponent);

@@ -147,17 +147,17 @@ class TransactionListComponent extends React.Component {
             <div> {this.state.transactions && this.state.currencies && this.state.user && (
                 <div className="transactions-container">
                     <h1 className="transacions-title">My Transactions</h1>
-                    <div className={"top-row title space-between-row"}>
-                        From:<select className={"users-select"} onChange={this.change} value={this.state.value}>
+                    <div className={"transaction-top-row transaction-title transaction-space-between-row"}>
+                        From:<select className={"transaction-users-select"} onChange={this.change} value={this.state.value}>
                         <option value={"any"}>Any Account</option>
                         {this.state.accounts ? this.allSenders() : undefined}
                     </select>
-                        To:<select className={"users-select"} onChange={this.changeRecipient}
+                        To:<select className={"transaction-users-select"} onChange={this.changeRecipient}
                                    value={this.state.v_recipient}>
                         <option value={"any"}>Any Account</option>
                         {this.state.accounts ? this.allRecipient() : undefined}
                     </select>
-                        Date:<select className={"users-select"} onChange={this.changeDate} value={this.state.v_date}>
+                        Date:<select className={"transaction-users-select"} onChange={this.changeDate} value={this.state.v_date}>
                         <option value={"topToBottom"}>Newest to Oldest</option>
                         <option value={"BottomToTop"}>Oldest to Newest</option>
                     </select>

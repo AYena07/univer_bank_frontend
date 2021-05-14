@@ -1,16 +1,16 @@
-.top-block {
+.transaction-top-block {
     min-height: 40vh;
     background: linear-gradient(180deg, #333333 0%, #855380 100%);
     padding: 30px 100px 30px 150px;
 }
 
-.bottom-block {
+.transaction-bottom-block {
     min-height: 60vh;
     background: linear-gradient(180deg, #855380 0%, #FFE5B4 100%);
     padding: 20px 100px 20px 150px;
 }
 
-.top-row {
+.transaction-top-row {
     color: #855380;
     font-size: x-large;
     font-weight: bold;
@@ -18,7 +18,7 @@
     padding-bottom: 40px;
 }
 
-.bottom-row {
+.transaction-bottom-row {
     color: #333333;
     font-size: x-large;
     font-weight: bold;
@@ -26,33 +26,33 @@
     padding-bottom: 40px;
 }
 
-.title {
+.transaction-title {
     font-size: xx-large;
 }
 
-.currency-block-retrieve {
+.transaction-currency-block-retrieve {
     display: flex;
     justify-content: space-between;
     width: 400px;
     padding-bottom: 0;
 }
 
-.edit-block-retrieve {
+.transaction-edit-block-retrieve {
     display: flex;
     align-items: center;
 }
 
-.retrieve-button {
+.transaction-retrieve-button {
     font-weight: bold;
     margin-left: 30px;
     transition: 0.3s;
 }
 
-.retrieve-button:hover {
+.transaction-retrieve-button:hover {
     background-color: purple;
 }
 
-.retrieve-input {
+.transaction-retrieve-input {
     background-color: #FFE5B4;
     color: #333333;
     font-size: x-large;
@@ -62,33 +62,33 @@
     border: none;
 }
 
-.retrieve-input:focus {
+.transaction-retrieve-input:focus {
     outline-color: #333333;
 }
 
-.confirm {
+.transaction-confirm {
     background-color: #608553;
 }
 
-.confirm:hover {
+.transaction-confirm:hover {
     background-color: green;
 }
 
-.cancel {
+.transaction-cancel {
     background-color: #A93232;
 }
 
-.cancel:hover {
+.transaction-cancel:hover {
     background-color: red;
 }
 
-.space-between-row {
+.transaction-space-between-row {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.card-layout {
+.transaction-card-layout {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -102,7 +102,7 @@
     margin-bottom: 20px;
 }
 
-.cards-container {
+.transaction-cards-container {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
@@ -112,7 +112,7 @@
 
 /* The Modal (background) */
 
-.users-modal {
+.transaction-users-modal {
     display: block;
     /* Hidden by default */
     position: fixed;
@@ -135,7 +135,7 @@
     /* Black w/ opacity */
 }
 
-.modal-content {
+.transaction-modal-content {
     background-color: #FFE5B4;
     width: 50%;
     margin: 0 25% 0 25%;
@@ -144,7 +144,7 @@
     background: linear-gradient(180deg, #855380 0%, #FFE5B4 100%);
 }
 
-.account-create-input {
+.transaction-account-create-input {
     background-color: #FFE5B4;
     color: #333333;
     font-size: x-large;
@@ -155,23 +155,23 @@
     margin-left: 10px;
 }
 
-.list-option-retrieve {
+.transaction-list-option-retrieve {
     margin-left: 165px;
     width: 350px;
     z-index: 10;
 }
 
-.users {
+.transaction-users {
     min-height: 80px;
     padding: 10px;
 }
 
-.picked-user {
+.transaction-picked-user {
     font-weight: bold;
     font-size: x-large;
 }
 
-.add-card-btn {
+.transaction-add-card-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -179,14 +179,14 @@
     width: 220px;
 }
 
-.card-retrieve {
+.transaction-card-retrieve {
     margin: 0 20% 0 20%;
     background-color: #855380;
     border-radius: 30px;
     padding: 40px 60px 20px 60px;
 }
 
-.card-create-modal {
+.transaction-card-create-modal {
     display: block;
     /* Hidden by default */
     position: fixed;
@@ -209,7 +209,7 @@
     /* Black w/ opacity */
 }
 
-.users-select {
+.transaction-users-select {
     font-size: x-large;
     background-color: #855380;
     color: white;
@@ -221,7 +221,7 @@
     border-width: 2px;
 }
 
-.card-create-input {
+.transaction-card-create-input {
     background-color: #FFE5B4;
     color: #333333;
     font-size: x-large;
@@ -231,19 +231,19 @@
     border: none;
 }
 
-.card-create-input:focus {
+.transaction-card-create-input:focus {
     outline-color: #333333;
 }
 
-.pin-input {
+.transaction-pin-input {
     min-width: 10px;
 }
 
-.stretched {
+.transaction-stretched {
     width: inherit;
 }
 
-.card-retrieve-modal {
+.transaction-card-retrieve-modal {
     display: block;
     /* Hidden by default */
     position: fixed;
@@ -266,7 +266,7 @@
     /* Black w/ opacity */
 }
 
-.input-retrieve {
+.transaction-input-retrieve {
     background-color: #855380;
     color: white;
     border: none;

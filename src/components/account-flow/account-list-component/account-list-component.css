@@ -1,0 +1,101 @@
+@keyframes gradient-transformation {
+    from {margin-left: 0;}
+    to {margin-left: 20px;}
+}
+
+@keyframes gradient-transformation-reverse {
+    from {margin-left: 20px;}
+    to {margin-left: 0;}
+}
+
+.accounts-title {
+    text-align: left;
+    margin-top: 0;
+    margin-left: 100px;
+    padding: 20px 20px 20px 50px;
+}
+
+.accounts-container {
+    background: linear-gradient(180deg, #FFE5B4 0%, #855380 100%);
+    min-height: 100vh;
+}
+
+.account-item:hover {
+    animation: gradient-transformation;
+    animation-duration: 0.25s;
+    margin-left: 20px;
+}
+
+.account-item {
+    height: 70px;
+    animation: gradient-transformation-reverse;
+    animation-duration: 0.25s;
+    border-radius: 20px;
+    padding: 15px 20px;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    width: 60%;
+    display: flex;
+    background: linear-gradient(0deg, #333333 0%, #855380 100%);
+    margin-bottom: 30px;
+    flex-direction: row;
+    box-shadow: 5px 5px 5px #333333;
+}
+
+.number-block {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.money-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.accounts {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.center-col {
+    font-size: x-large;
+    display: flex;
+    flex-grow: 4;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-col {
+    display: flex;
+    min-width: 100px;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.new-account {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 30px;
+    transition: background-color .5s;
+    color: white;
+    font-size: large;
+    border-radius: 20px;
+    text-decoration: none;
+    background-color: #855380;
+    padding: 20px 20%;
+}
+.new-account:hover {
+    cursor: pointer;
+    background-color: purple;
+}

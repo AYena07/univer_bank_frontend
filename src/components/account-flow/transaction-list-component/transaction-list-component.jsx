@@ -74,7 +74,7 @@ class TransactionListComponent extends React.Component {
                 return <div className={"transaction-item"}>
                     <div className={"left-col-transactions"}>
                         <div className={"number-block-transactions"}>
-                            From: # {accounts.find(x => x.id === item.sender).number}
+                            From: # {accounts === null ? accounts.find(x => x.id === item.sender).number: undefined}
                         </div>
                         <div className={"money-block-transactions"}>
 

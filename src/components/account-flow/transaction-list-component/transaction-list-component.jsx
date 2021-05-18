@@ -68,7 +68,7 @@ class TransactionListComponent extends React.Component {
         }
 
 
-        return trans.filter((item) => (value === "any" ? true : value === item.sender.toString())
+        return trans === null ? trans.filter((item) => (value === "any" ? true : value === item.sender.toString())
             && (v_recipient === "any" ? true : v_recipient === item.recipient.toString()))
             .map(function (item, index) {
                 return <div className={"transaction-item"}>
@@ -79,7 +79,8 @@ class TransactionListComponent extends React.Component {
                         <div className={"money-block-transactions"}>
 
                             <div className={"cash-block-transactions"}>
-                                To: # {accounts.find(x => x.id === item.recipient).number}
+                                To:
+                                # {accounts === null ? accounts.find(x => x.id === item.recipient).number : undefined}
                             </div>
                         </div>
                     </div>
@@ -87,13 +88,13 @@ class TransactionListComponent extends React.Component {
 
                     </div>
                     <div className={"reight-col-transactions"}>
-                        Value: {item.cash} {currencies.find(x => x.id === accounts.find(x => x.id === item.recipient).currency).title}
+                        Value: {item.cash} {currencies === null ? currencies.find(x => x.id === accounts.find(x => x.id === item.recipient).currency).title : undefined}
                         <br/>
                         <br/>
                         Date: {item.date}
                     </div>
                 </div>
-            })
+            }): undefined
     }
 
     allSenders() {
@@ -105,12 +106,12 @@ class TransactionListComponent extends React.Component {
         });
 
 
-        return Array.from(idSet).map((item, index) => {
+        return Array === null ? Array.from(idSet).map((item, index) => {
             let acc = accounts.find((elem, ind) => {
                 return elem.id === item
             });
             return <option value={item}>{acc ? acc.number : "Some Account"}</option>
-        });
+        }) : undefined
     }
 
     allRecipient() {
@@ -121,12 +122,12 @@ class TransactionListComponent extends React.Component {
         });
 
 
-        return Array.from(idSet).map((item, index) => {
+        return Array === null ? Array.from(idSet).map((item, index) => {
             let acc = accounts.find((elem, ind) => {
                 return elem.id === item
             });
             return <option value={item}>{acc ? acc.number : "Some Account"}</option>
-        });
+        }) : undefined
     }
 
 
@@ -148,7 +149,8 @@ class TransactionListComponent extends React.Component {
                 <div className="transactions-container">
                     <h1 className="transacions-title">My Transactions</h1>
                     <div className={"transaction-top-row transaction-title transaction-space-between-row"}>
-                        From:<select className={"transaction-users-select"} onChange={this.change} value={this.state.value}>
+                        From:<select className={"transaction-users-select"} onChange={this.change}
+                                     value={this.state.value}>
                         <option value={"any"}>Any Account</option>
                         {this.state.accounts ? this.allSenders() : undefined}
                     </select>
@@ -157,7 +159,8 @@ class TransactionListComponent extends React.Component {
                         <option value={"any"}>Any Account</option>
                         {this.state.accounts ? this.allRecipient() : undefined}
                     </select>
-                        Date:<select className={"transaction-users-select"} onChange={this.changeDate} value={this.state.v_date}>
+                        Date:<select className={"transaction-users-select"} onChange={this.changeDate}
+                                     value={this.state.v_date}>
                         <option value={"topToBottom"}>Newest to Oldest</option>
                         <option value={"BottomToTop"}>Oldest to Newest</option>
                     </select>

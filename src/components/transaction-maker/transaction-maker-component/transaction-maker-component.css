@@ -1,0 +1,185 @@
+@keyframes gradient-transformation {
+    from {margin-left: 0;}
+    to {margin-left: 20px;}
+}
+
+@keyframes gradient-transformation-reverse {
+    from {margin-left: 20px;}
+    to {margin-left: 0;}
+}
+
+.new-trans-title {
+    display: flex;
+    margin-top: 3%;
+    margin-left: 100px;
+    padding: 20px 20px 20px 50px;
+}
+.sender-form {
+    float: left;
+    margin-left: 10%;
+    width: 28%;
+}
+
+.receiver-form {
+    float: right;
+    margin-right: 10%;
+    width: 28%;
+}
+
+.card {
+    height: 230px;
+    background: #855380;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgba(51,51,51,0.5);
+}
+
+.payment-info {
+    margin-top: 50px;
+    color: white;
+    text-align: left;
+    font-size: 120%;
+}
+
+.card-left {
+    color: white;
+    text-align: left;
+    margin-left: 5%;
+    font-size: 130%;
+}
+.custom-select  {
+    border-bottom: 2px solid white;
+}
+.custom-input p {
+    margin-top: 5%;
+    margin-bottom: 0;
+}
+
+.custom-input {
+    border-bottom: 2px solid white;
+    margin: 0;
+    color: white;
+}
+.custom-input input{
+    background: none;
+    border: none;
+    color: white;
+}
+.custom-select select{
+    background: none;
+    border: none;
+    border-radius: 3px;
+    border-bottom: white;
+    width: 100%;
+    color: white;
+    font-size: 110%;
+}
+.custom-select select option{
+    backface-visibility: hidden;
+    color: white;
+    background: #855380;
+}
+
+.continue-button button{
+    margin-top: 10%;
+    margin-left: 35%;
+    float: left;
+    line-height: 30px;
+    height: 50px;
+    width: 30%;
+    background: white;
+    color: #855380;
+    border-radius: 20px ;
+    font-size: 150%;
+}
+
+.continue-button button:hover{
+    cursor: pointer;
+}
+.amount{
+    margin-top: 0;
+    margin-left: 38%;
+    float: left;
+    height: 50px;
+    width: 25%;
+    color: #855380;
+    font-size: 150%;
+}
+.new-trans-container {
+    background: linear-gradient(180deg, #FFE5B4 0%, #855380 100%);
+    min-height: 100vh;
+}
+
+.account-item:hover {
+    animation: gradient-transformation;
+    animation-duration: 0.25s;
+    margin-left: 20px;
+}
+
+.account-item {
+    height: 70px;
+    animation: gradient-transformation-reverse;
+    animation-duration: 0.25s;
+    border-radius: 20px;
+    padding: 15px 20px;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    width: 60%;
+    background: linear-gradient(0deg, #333333 0%, #855380 100%);
+    margin-bottom: 30px;
+    flex-direction: row;
+    box-shadow: 5px 5px 5px #333333;
+}
+
+.number-block {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.money-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.accounts {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.center-col {
+    font-size: x-large;
+    display: flex;
+    flex-grow: 4;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-col {
+    display: flex;
+    min-width: 100px;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.new-account {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 30px;
+    width: 60%;
+    transition: background-color .5s;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.new-account:hover {
+    cursor: pointer;
+    background-color: purple;
+}

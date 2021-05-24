@@ -8,10 +8,6 @@ body {
   background-color: #FFE5B4;
 }
 
-html, body {
-  height: 100%;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

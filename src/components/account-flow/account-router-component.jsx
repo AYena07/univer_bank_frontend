@@ -1,14 +1,9 @@
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Redirect, useRouteMatch} from 'react-router-dom';
 import AccountListComponent from './account-list-component/account-list-component';
 import HeaderComponent from "./header-component/header-component";
 import UserService from '../../services/user-service'
-import AccountRetrieveComponent from "./account-retrieve-component/account-retrieve-component";
-import './account-style.css'
 import LeftColumnComponent from "./left-column-component/left-column-component";
-import AccountCreateComponent from "./account-create-component/account-create-component";
 import React from 'react';
-import TransactionComponent from "./transaction-router-component";
-import TransactionListComponent from "./transaction-list-component/transaction-list-component";
 
 class AccountRouterComponent extends React.Component {
 
@@ -30,16 +25,13 @@ class AccountRouterComponent extends React.Component {
     }
 
     render() {
-        return (<div className={"wrappers"}>
-        { this.state.authenticated && (<div className={"wrappers"}>
+        return (<div>
+        { this.state.authenticated && (<div>
                 <LeftColumnComponent location={this.props.location}/>
                 <HeaderComponent history={this.props.history} user={this.state.user}/>
                 <BrowserRouter>
                     <Switch>
                         <Route exact path='/accounts' component={AccountListComponent}/>
-                        <Route exact path='/accounts/create' component={AccountCreateComponent}/>
-                        <Route exact path='/accounts/:id' component={AccountRetrieveComponent}/>
-                        <Route exact path='/trans' component={TransactionListComponent}/>
                     </Switch>
                 </BrowserRouter>
             </div>)}

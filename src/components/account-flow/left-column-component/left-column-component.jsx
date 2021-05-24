@@ -25,12 +25,12 @@ class LeftColumnComponent extends React.Component {
                 <div className={"burger-button"} onClick={this.openNav}>
                     <span className={"burger-text"} >&#9776;</span>
                 </div>
-                <div id="side-box" className="sidebox" onClick={this.closeNav}>
+                <div id="side-box" className="sidebox">
                 </div>
                 <div id="side-nav" className="sidenav">
                     <span className="closebtn x" onClick={this.closeNav}>&times;</span>
                     <Link className={(path === "/accounts" ? " selected" : " ") + " side-link"} to="/">My Bills</Link>
-                    <Link className={(path === "/trans" ? " selected" : " ") + " side-link"} to="/trans">My Transactions</Link>
+                    <Link className={(path === "/trans" ? " selected" : " ") + " side-link"} to="/">My Transactions</Link>
                     <Link className={(path === "/profile" ? " selected" : " ") + " side-link"} to="/">Profile</Link>
                 </div>
             </div>

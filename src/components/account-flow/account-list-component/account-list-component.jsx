@@ -1,8 +1,6 @@
 import './account-list-component.css'
-import { withRouter } from 'react-router';
 import AccountService from '../../../services/account-service';
 import UserService from '../../../services/user-service';
-import {Link} from 'react-router-dom';
 import React from 'react';
 
 class AccountListComponent extends React.Component {
@@ -14,7 +12,6 @@ class AccountListComponent extends React.Component {
             currencies: null,
             user: null
         }
-        this.renderAccounts = this.renderAccounts.bind(this);
     }
 
     componentDidMount() {
@@ -39,9 +36,8 @@ class AccountListComponent extends React.Component {
         console.log(this.state);
         const currencies = this.state.currencies;
         const user = this.state.user;
-        const { history } = this.props;
         return this.state.accounts.map(function (item, index) {
-            return <div className={"account-item"} onClick={() => {history.push('/accounts/' + item.id);}}>
+            return <div className={"account-item"}>
                 <div className={"left-col"}>
                     <div className={"number-block"}>
                         # {item.number}
@@ -68,10 +64,10 @@ class AccountListComponent extends React.Component {
 
     render() {
         return (
-            <div className={"wrappers"}> { this.state.accounts && this.state.currencies && this.state.user && (
+            <div> { this.state.accounts && this.state.currencies && this.state.user && (
                 <div className={"accounts-container"}>
                 <h1 className={"accounts-title"}>My Bills</h1>
-                <Link className={"new-account"} to="/accounts/create">Create another account</Link>
+                <button className={"new-account"}>Create another account</button>
                 <div className={"accounts"}>
                     {this.renderAccounts()}
                 </div>
@@ -81,4 +77,4 @@ class AccountListComponent extends React.Component {
     }
 }
 
-export default withRouter(AccountListComponent);
+export default AccountListComponent;

@@ -3,11 +3,9 @@ import React from 'react';
 import './transaction-list-component.css';
 import './filter-select.css';
 import AccountService from '../../../services/account-service';
+import { withRouter } from 'react-router';
 import TransactionService from '../../../services/transaction-service';
-import 'react-dropdown/style.css';
-import {
-    useParams
-} from "react-router-dom";
+
 
 class TransactionListComponent extends React.Component {
 
@@ -26,6 +24,7 @@ class TransactionListComponent extends React.Component {
         }
         this.allSenders = this.allSenders.bind(this);
         this.allRecipient = this.allRecipient.bind(this);
+        this.navigateNewTransaction = this.navigateNewTransaction.bind(this);
     }
 
 
@@ -143,6 +142,10 @@ class TransactionListComponent extends React.Component {
         this.setState({v_date: event.target.value});
     };
 
+    navigateNewTransaction() {
+        this.props.history.push('/transactions/new');
+    }
+
     render() {
         return (
             <div> {this.state.transactions && this.state.currencies && this.state.user && (
@@ -165,7 +168,7 @@ class TransactionListComponent extends React.Component {
                         <option value={"BottomToTop"}>Oldest to Newest</option>
                     </select>
                     </div>
-                    <button className="new-transaction">Make Transaction</button>
+                    <button className="new-transaction" onClick={this.navigateNewTransaction}>Make Transaction</button>
 
                     <div className="transactions">
                         {this.state.accounts ? this.renderTransactions() : undefined}
@@ -176,4 +179,4 @@ class TransactionListComponent extends React.Component {
     }
 }
 
-export default TransactionListComponent;
+export default withRouter(TransactionListComponent);

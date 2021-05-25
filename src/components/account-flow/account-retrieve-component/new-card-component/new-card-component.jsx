@@ -26,7 +26,7 @@ class NewCardComponent extends React.Component {
     usersMap() {
         const allUsers = this.props.allUsers;
         return this.props.account.users.map(function (elem, index) {
-            const user = allUsers.find(function (item, ind) {return item.id === elem;});
+            const user = allUsers.find(function (item, ind) {return (item.id === elem);});
             return <option value={user.id}>{user.email}</option>;
         })
     }
@@ -88,6 +88,7 @@ class NewCardComponent extends React.Component {
         return <div className={"card-retrieve"}>
             <div className={"top-row title space-between-row"}>User:
                 <select className={"users-select"} ref={this.user}>
+                    <option value={this.props.account.owner_id}>{this.props.account.owner}</option>
                     {this.usersMap()}
                 </select>
             </div>

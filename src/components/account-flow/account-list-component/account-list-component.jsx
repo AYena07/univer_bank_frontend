@@ -41,7 +41,7 @@ class AccountListComponent extends React.Component {
         const user = this.state.user;
         const { history } = this.props;
         return this.state.accounts.map(function (item, index) {
-            return <div className={"account-item"} onClick={() => {history.push('/accounts/' + item.id);}}>
+            return <div className={"account-item"} onClick={() => {history.push('/' + item.id);}}>
                 <div className={"left-col"}>
                     <div className={"number-block"}>
                         # {item.number}
@@ -71,7 +71,7 @@ class AccountListComponent extends React.Component {
             <div className={"wrappers"}> { this.state.accounts && this.state.currencies && this.state.user && (
                 <div className={"accounts-container"}>
                 <h1 className={"accounts-title"}>My Bills</h1>
-                <Link className={"new-account"} to="/accounts/create">Create another account</Link>
+                <Link className={"new-account"} to="/create">Create another account</Link>
                 <div className={"accounts"}>
                     {this.renderAccounts()}
                 </div>

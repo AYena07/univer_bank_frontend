@@ -86,8 +86,11 @@ class CardRetrieveComponent extends React.Component {
                 {this.formDate()}
             </div>
             <div className={"top-row space-between-row"}>Restriction:
+                {(this.props.currentUser.id === this.props.account.owner_id) &&
                 <input type={"text"} value={this.state.restriction} className={"input-retrieve"} size="10"
-                       onChange={(e) => {this.setState({restriction: e.target.value})}}/>
+                       onChange={(e) => {this.setState({restriction: e.target.value})}}/>}
+                {(this.props.currentUser.id !== this.props.account.owner_id) &&
+                <div>{this.state.restriction}</div>}
             </div>
             <div className={"buttons-container"}>
                 <button className={"create"} onClick={this.saveCard}>Save</button>

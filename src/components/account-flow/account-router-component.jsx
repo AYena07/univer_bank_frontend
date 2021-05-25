@@ -7,8 +7,9 @@ import './account-style.css'
 import LeftColumnComponent from "./left-column-component/left-column-component";
 import AccountCreateComponent from "./account-create-component/account-create-component";
 import React from 'react';
-import TransactionComponent from "./transaction-router-component";
 import TransactionListComponent from "./transaction-list-component/transaction-list-component";
+import AccountTransactionMakerComponent
+    from "./account-transaction-maker-component/account-transaction-maker-component";
 
 class AccountRouterComponent extends React.Component {
 
@@ -32,14 +33,15 @@ class AccountRouterComponent extends React.Component {
     render() {
         return (<div className={"wrappers"}>
         { this.state.authenticated && (<div className={"wrappers"}>
-                <LeftColumnComponent location={this.props.location}/>
                 <HeaderComponent history={this.props.history} user={this.state.user}/>
-                <BrowserRouter>
+                <BrowserRouter basename={'/accounts'}>
+                    <LeftColumnComponent location={this.props.location} history={this.props.history}/>
                     <Switch>
-                        <Route exact path='/accounts' component={AccountListComponent}/>
-                        <Route exact path='/accounts/create' component={AccountCreateComponent}/>
-                        <Route exact path='/accounts/:id' component={AccountRetrieveComponent}/>
-                        <Route exact path='/trans' component={TransactionListComponent}/>
+                        <Route exact path='/' component={AccountListComponent}/>
+                        <Route exact path='/create' component={AccountCreateComponent}/>
+                        <Route exact path='/transactions' component={TransactionListComponent}/>
+                        <Route exact path='/transactions/new' component={AccountTransactionMakerComponent}/>
+                        <Route exact path='/:id' component={AccountRetrieveComponent}/>
                     </Switch>
                 </BrowserRouter>
             </div>)}

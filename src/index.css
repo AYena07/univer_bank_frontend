@@ -12,6 +12,10 @@ html, body {
   height: 100%;
 }
 
+button, a, .link, .closebtn, .burger-button, .account-item, .card-layout{
+  cursor: pointer;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

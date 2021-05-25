@@ -6,9 +6,7 @@ import NewCardComponent from "./new-card-component/new-card-component";
 import CardRetrieveComponent from "./card-retrieve-component/card-retrieve-component";
 import UserService from "../../../services/user-service";
 import {Link, useHistory} from "react-router-dom";
-import { withRouter } from 'react-router'
-import AccountRouterComponent from "../account-router-component";
-
+import { withRouter } from 'react-router';
 class AccountRetrieveComponent extends React.Component {
 
     constructor(props) {
@@ -147,6 +145,8 @@ class AccountRetrieveComponent extends React.Component {
     cardsForm() {
 
         const users = this.state.allUsers;
+        const isOwner = (this.state.account.owner_id === this.state.currentUser.id);
+        const user_id = this.state.currentUser.id;
         const cardClick = this.cardClick;
         return this.state.cards.map(function (elem, index) {
             const owner_email = elem.owner_email;
@@ -156,17 +156,18 @@ class AccountRetrieveComponent extends React.Component {
             if (!owner) {
                 owner = {first_name: '', last_name: ''};
             }
-            return <div className={"card-layout"} id={"card-layout-" + elem.id} onClick={cardClick}>
-                <div className={"card-top-row"}>{owner.first_name} {owner.last_name}</div>
-                <div className={"card-bottom-row"}>{elem.number}</div>
-            </div>
+            if (isOwner || user_id === elem.owner)
+                return <div className={"card-layout"} id={"card-layout-" + elem.id} onClick={cardClick}>
+                    <div className={"card-top-row"}>{owner.first_name} {owner.last_name}</div>
+                    <div className={"card-bottom-row"}>{elem.number}</div>
+                </div>
         })
     }
 
     render() {
         const account = this.state.account
         const newTo = {
-            pathname: "/trans",
+            pathname: "/transactions",
             userId: account ? account.id : undefined
         };
         return <div> {
@@ -199,7 +200,7 @@ class AccountRetrieveComponent extends React.Component {
                     </div>
                     <div className={"top-row space-between-row"}>
                         <div>Owner: {this.state.account.owner === this.state.currentUser.email ? "you" : this.state.account.owner}</div>
-                        <button className={"retrieve-button"}>Make new transaction</button>
+                        <Link to={'/transactions/new?sender=' + this.state.account.id}><button className={"retrieve-button"}>Make new transaction</button></Link>
                     </div>
                     <div className={"top-row currency-block-retrieve"}>
                         <div className={"title"}>{this.getCurrencyName(this.state.account.currency)}</div>
@@ -212,23 +213,26 @@ class AccountRetrieveComponent extends React.Component {
                     </div>
                     <div className={"bottom-row cards-container"}>
                         {this.cardsForm()}
+                        { (this.state.currentUser.email === this.state.account.owner) &&
                         <div className={"card-layout add-card-btn"} onClick={this.cardNewModeChange}>
                             +
-                        </div>
+                        </div>}
                     </div>
                 </div>
                 {this.state.usersModal && <div className={"users-modal"}>
                     <UsersListComponent currentUser={this.state.currentUser} account={this.state.account}
                                         changeParentState={this.changeParentState}/>
                 </div>}
-                {this.state.cardCreateModal && <div className={"card-create-modal"}>
+                {this.state.cardCreateModal && (this.state.currentUser.email === this.state.account.owner) &&
+                <div className={"card-create-modal"}>
                     <NewCardComponent account={this.state.account} allUsers={this.state.users}
                                       paymentMethods={this.state.payment_methods} changeParentState={this.changeParentState}
                                       cards={this.state.cards}/>
                 </div>}
-                {this.state.cardRetrieveModal && <div className={"card-retrieve-modal"}>
-                    <CardRetrieveComponent changeParentState={this.changeParentState} card={this.state.pickedCard}
-                                           users={this.state.allUsers} paymentMethods={this.state.payment_methods} cards={this.state.cards}/>
+                {this.state.cardRetrieveModal &&
+                <div className={"card-retrieve-modal"}>
+                    <CardRetrieveComponent changeParentState={this.changeParentState} card={this.state.pickedCard} account={this.state.account}
+                                           users={this.state.allUsers} paymentMethods={this.state.payment_methods} cards={this.state.cards} currentUser={this.state.currentUser}/>
                 </div>}
             </div>)
 

@@ -56,7 +56,6 @@ class TransactionListComponent extends React.Component {
     renderTransactions() {
         console.log(this.state);
         const currencies = this.state.currencies;
-        const user = this.state.user;
         const accounts = this.state.accounts;
         const value = this.state.value;
         const v_recipient = this.state.v_recipient;
@@ -66,20 +65,22 @@ class TransactionListComponent extends React.Component {
             trans.reverse();
         }
 
+        console.log(trans)
 
-        return trans === null ? trans.filter((item) => (value === "any" ? true : value === item.sender.toString())
+
+        return trans !== null ? trans.filter((item) => (value === "any" ? true : value === item.sender.toString())
             && (v_recipient === "any" ? true : v_recipient === item.recipient.toString()))
             .map(function (item, index) {
                 return <div className={"transaction-item"}>
                     <div className={"left-col-transactions"}>
                         <div className={"number-block-transactions"}>
-                            From: # {accounts === null ? accounts.find(x => x.id === item.sender).number: undefined}
+                            From: # {accounts !== null ? accounts.find(x => x.id === item.sender).number: undefined}
                         </div>
                         <div className={"money-block-transactions"}>
 
                             <div className={"cash-block-transactions"}>
                                 To:
-                                # {accounts === null ? accounts.find(x => x.id === item.recipient).number : undefined}
+                                # {accounts !== null ? accounts.find(x => x.id === item.recipient).number : undefined}
                             </div>
                         </div>
                     </div>
@@ -87,7 +88,7 @@ class TransactionListComponent extends React.Component {
 
                     </div>
                     <div className={"reight-col-transactions"}>
-                        Value: {item.cash} {currencies === null ? currencies.find(x => x.id === accounts.find(x => x.id === item.recipient).currency).title : undefined}
+                        Value: {item.cash} {currencies !== null ? currencies.find(x => x.id === accounts.find(x => x.id === item.recipient).currency).title : undefined}
                         <br/>
                         <br/>
                         Date: {item.date}
@@ -97,7 +98,7 @@ class TransactionListComponent extends React.Component {
     }
 
     allSenders() {
-        var idSet = new Set();
+        const idSet = new Set();
         const accounts = this.state.accounts;
         Array.from(this.state.transactions).forEach(function (item, index) {
             idSet.add(item.sender)
@@ -105,7 +106,7 @@ class TransactionListComponent extends React.Component {
         });
 
 
-        return Array === null ? Array.from(idSet).map((item, index) => {
+        return Array !== null ? Array.from(idSet).map((item, index) => {
             let acc = accounts.find((elem, ind) => {
                 return elem.id === item
             });
@@ -114,14 +115,14 @@ class TransactionListComponent extends React.Component {
     }
 
     allRecipient() {
-        var idSet = new Set();
+        const idSet = new Set();
         const accounts = this.state.accounts;
         Array.from(this.state.transactions).forEach(function (item, index) {
             idSet.add(item.recipient)
         });
 
 
-        return Array === null ? Array.from(idSet).map((item, index) => {
+        return Array !== null ? Array.from(idSet).map((item, index) => {
             let acc = accounts.find((elem, ind) => {
                 return elem.id === item
             });

@@ -18,6 +18,9 @@ class AccountTransactionMakerComponent extends React.Component {
             money: null
         }
         this.getItemsSet = this.getItemsSet.bind(this);
+        this.selectSender = this.selectSender.bind(this);
+        this.change = this.change.bind(this);
+        this.getSenderNumber = this.getSenderNumber.bind(this);
     }
 
     componentDidMount() {
@@ -43,13 +46,25 @@ class AccountTransactionMakerComponent extends React.Component {
         })
     }
 
-    change = (event) => {
-        this.setState({ sender_item : event.target.value});
+    change(event) {
+        this.setState({ sender_item : event.target.value, sender_number: null});
+        event.target.value = "";
+        console.log(event.target)
     };
 
-    selectSender() {
-        this.setState({})
+    selectSender(event) {
+        this.setState({sender_number: event.target.value})
     }
+
+    getSenderNumber() {
+        const elem_num = this.state.sender_number;
+        if (!elem_num) return;
+        if (this.state.sender_item === "Card")
+            return this.state.cards.find(function (elem, _) {return elem.id.toString() === elem_num;}).number
+        else
+            return this.state.accounts.find(function (elem, _) {return elem.id.toString() === elem_num;}).number
+    }
+
 
     getItemsSet() {
         if (this.state.sender_item === 'Card')
@@ -70,7 +85,7 @@ class AccountTransactionMakerComponent extends React.Component {
                     <div className={"new-transaction-forms"}>
                     <div className={"sender-form"}>
                         <div className={"card"}>
-                            <h1 className={"card-left"}>{this.state.sender_item}</h1>
+                            <h1 className={"card-left"}>{this.state.sender_item}<div>{this.getSenderNumber()}</div></h1>
                             <h1 className={"card-left"}>Owner<div>Valeria</div></h1>
                         </div>
                         <div className={"payment-info"}>
@@ -83,7 +98,8 @@ class AccountTransactionMakerComponent extends React.Component {
                             </div>
                             <p> <b> Choose the card </b> </p>
                             <div className={"custom-select"}>
-                                <select value="sender_item">
+                                <select onChange={this.selectSender}>
+                                    <option value={""}>Select card</option>
                                     {this.getItemsSet()}
                                 </select>
                             </div>

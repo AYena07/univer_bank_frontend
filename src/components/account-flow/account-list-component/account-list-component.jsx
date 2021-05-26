@@ -70,7 +70,7 @@ class AccountListComponent extends React.Component {
         return (
             <div className={"wrappers"}> { this.state.accounts && this.state.currencies && this.state.user && (
                 <div className={"accounts-container"}>
-                <h1 className={"accounts-title"}>My Bills</h1>
+                <h1 className={"accounts-title"}>My Accounts</h1>
                 <Link className={"new-account"} to="/create">Create another account</Link>
                 <div className={"accounts"}>
                     {this.renderAccounts()}

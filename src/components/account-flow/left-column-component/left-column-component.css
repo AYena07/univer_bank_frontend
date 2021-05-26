@@ -82,6 +82,7 @@
     position: fixed;
     z-index: 3;
     opacity: 50%;
+    top: 0px;
 }
 
 

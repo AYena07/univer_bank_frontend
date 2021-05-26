@@ -93,7 +93,7 @@ class CardRetrieveComponent extends React.Component {
                 <div>{this.state.restriction}</div>}
             </div>
             <div className={"buttons-container"}>
-                <button className={"create"} onClick={this.saveCard}>Save</button>
+                {(this.props.currentUser.id === this.props.account.owner_id) && <button className={"create"} onClick={this.saveCard}>Save</button>}
                 <button className={"cancel"} onClick={this.cancel}>Cancel</button>
             </div>
         </div>

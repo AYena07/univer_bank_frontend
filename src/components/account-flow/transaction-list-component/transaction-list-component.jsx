@@ -65,21 +65,21 @@ class TransactionListComponent extends React.Component {
         if (v_date === "BottomToTop") {
             trans.reverse();
         }
+        console.log(accounts)
 
-
-        return trans === null ? trans.filter((item) => (value === "any" ? true : value === item.sender.toString())
+        return trans !== null ? trans.filter((item) => (value === "any" ? true : value === item.sender.toString())
             && (v_recipient === "any" ? true : v_recipient === item.recipient.toString()))
             .map(function (item, index) {
                 return <div className={"transaction-item"}>
                     <div className={"left-col-transactions"}>
                         <div className={"number-block-transactions"}>
-                            From: # {accounts === null ? accounts.find(x => x.id === item.sender).number: undefined}
+                            From: # {item.sender_number}
                         </div>
                         <div className={"money-block-transactions"}>
 
                             <div className={"cash-block-transactions"}>
                                 To:
-                                # {accounts === null ? accounts.find(x => x.id === item.recipient).number : undefined}
+                                # {item.recipient_number}
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ class TransactionListComponent extends React.Component {
 
                     </div>
                     <div className={"reight-col-transactions"}>
-                        Value: {item.cash} {currencies === null ? currencies.find(x => x.id === accounts.find(x => x.id === item.recipient).currency).title : undefined}
+                        Value: {item.cash} EUR
                         <br/>
                         <br/>
                         Date: {item.date}
@@ -105,7 +105,8 @@ class TransactionListComponent extends React.Component {
         });
 
 
-        return Array === null ? Array.from(idSet).map((item, index) => {
+
+        return Array !== null ? Array.from(idSet).map((item, index) => {
             let acc = accounts.find((elem, ind) => {
                 return elem.id === item
             });
@@ -121,7 +122,7 @@ class TransactionListComponent extends React.Component {
         });
 
 
-        return Array === null ? Array.from(idSet).map((item, index) => {
+        return Array !== null ? Array.from(idSet).map((item, index) => {
             let acc = accounts.find((elem, ind) => {
                 return elem.id === item
             });
@@ -148,7 +149,7 @@ class TransactionListComponent extends React.Component {
 
     render() {
         return (
-            <div> {this.state.transactions && this.state.currencies && this.state.user && (
+            <div> {this.state.transactions && this.state.currencies && this.state.user && this.state.accounts && (
                 <div className="transactions-container">
                     <h1 className="transacions-title">My Transactions</h1>
                     <div className={"transaction-top-row transaction-title transaction-space-between-row"}>

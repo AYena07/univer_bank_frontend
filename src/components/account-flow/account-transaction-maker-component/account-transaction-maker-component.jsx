@@ -1,7 +1,7 @@
 import './account-transaction-maker-component.css'
 import AccountService from '../../../services/account-service';
 import UserService from '../../../services/user-service';
-import React from 'react';
+import React, {createRef} from 'react';
 
 class AccountTransactionMakerComponent extends React.Component {
     constructor(props) {
@@ -17,9 +17,12 @@ class AccountTransactionMakerComponent extends React.Component {
             receiver_number: null,
             money: null
         }
+        this.myRef = React.createRef();
         this.getItemsSet = this.getItemsSet.bind(this);
         this.selectSender = this.selectSender.bind(this);
         this.change = this.change.bind(this);
+        this.changeReceiver = this.changeReceiver.bind(this);
+        this.selectReceiver = this.selectReceiver.bind(this);
         this.getSenderNumber = this.getSenderNumber.bind(this);
     }
 
@@ -52,8 +55,18 @@ class AccountTransactionMakerComponent extends React.Component {
         console.log(event.target)
     };
 
+    changeReceiver(event) {
+        this.setState({ receiver_item : event.target.value, receiver_number: null});
+        event.target.value = "";
+        console.log(event.target)
+    };
+
     selectSender(event) {
         this.setState({sender_number: event.target.value})
+    }
+
+    selectReceiver(event) {
+        this.setState({receiver_number: event.target.value})
     }
 
     getSenderNumber() {
@@ -107,21 +120,21 @@ class AccountTransactionMakerComponent extends React.Component {
                     </div>
                     <div className={"receiver-form"}>
                         <div className={"card"}>
-                            <h1 className={"card-left"}>Account<div>0000 1111 2222 3333</div></h1>
+                            <h1 className={"card-left"}>{this.state.receiver_item}<div>{this.getSenderNumber()}</div>{this.state.receiver_number} </h1>
                             <h1 className={"card-left"}>Owner<div>Artem</div></h1>
                         </div>
                         <div className={"payment-info"}>
                             <p> <b> Choose type of item</b> </p>
                             <div className={"custom-select"}>
-                                <select>
-                                    <option value="card">Card</option>
-                                    <option value="account">Account</option>
+                                <select value={this.state.receiver_item} onChange={this.changeReceiver}>
+                                    <option value="Card">Card</option>
+                                    <option value="Account">Account</option>
                                 </select>
                             </div>
                             <div className={"custom-input"}>
                                 <p><b> Receiver's card number </b></p>
                                 <input type="text" value={this.state.receiver_number}
-                                       onChange={this.change} className={"transaction-new-input"}/>
+                                       onChange={this.selectReceiver} className={"transaction-new-input"}/>
                             </div>
                         </div>
                         </div>

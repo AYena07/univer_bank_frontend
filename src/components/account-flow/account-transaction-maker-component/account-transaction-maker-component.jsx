@@ -120,7 +120,7 @@ class AccountTransactionMakerComponent extends React.Component {
                     </div>
                     <div className={"receiver-form"}>
                         <div className={"card"}>
-                            <h1 className={"card-left"}>{this.state.receiver_item}<div>{this.getSenderNumber()}</div>{this.state.receiver_number} </h1>
+                            <h1 className={"card-left"}>{this.state.receiver_item}<div/>{this.state.receiver_number} </h1>
                             <h1 className={"card-left"}>Owner<div>Artem</div></h1>
                         </div>
                         <div className={"payment-info"}>
